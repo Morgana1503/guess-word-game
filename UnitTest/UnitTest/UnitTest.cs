@@ -8,10 +8,12 @@ using Guess_word_game;
 
 namespace UnitTest
 {
+    [TestClass]
     public class UnitTest
     {
         IQuestionProvider questionProvider = new QuestionProviderImpl();
 
+        [TestMethod]
         public void TestGet()
         {
             var question = questionProvider.get();
@@ -20,6 +22,7 @@ namespace UnitTest
             Assert.IsNotNull(question.question);
         }
 
+        [TestMethod]
         public void TestGetReturns()
         {
             var question1 = questionProvider.get();

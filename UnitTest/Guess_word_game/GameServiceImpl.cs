@@ -8,6 +8,15 @@ namespace Guess_word_game
 {
     public class GameServiceImpl : IGameService
     {
+        private IQuestionProvider questionProvider;
+        private IGameView gameView;
+
+        public GameServiceImpl(IQuestionProvider questionProvider, IGameView gameView)
+        {
+            this.questionProvider = questionProvider;
+            this.gameView = gameView;
+        }
+
         public void GuessLetter(string letter)
         {
             throw new NotImplementedException();
@@ -20,7 +29,20 @@ namespace Guess_word_game
 
         public void start()
         {
-            throw new NotImplementedException();
+            var task = questionProvider.get();
+            gameView.showQuestion(task);
+
+            int count = task.answer.Length;
+
+            string currentGuess = "";
+            for (int i = 0; i < count; i++)
+            {
+                currentGuess = currentGuess + "*";
+            }
+
+            // повязати showQuestion i showCurrentGuess
+            // реалізувати GuessLetter i GuessWord
+
         }
     }
 }

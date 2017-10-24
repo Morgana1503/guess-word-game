@@ -5,15 +5,17 @@ using Moq;
 
 namespace GuaessWordGameTest
 {
+    [TestClass]
     public class GameServiceTest
     {
+        [TestMethod]
         public void TestStart()
         {
             var questionProvider =  new Mock<IQuestionProvider>();
 
             var question = new Question()
             {
-                question = "My favorite fruit?",
+                question = "What colour of oranges?",
                 answer = "Oranges"
             };
 
@@ -21,7 +23,7 @@ namespace GuaessWordGameTest
 
             var gameView = new Mock<IGameView>();
 
-            var gameservice = new GameServiceImpl();
+            var gameservice = new GameServiceImpl(questionProvider.Object, gameView.Object);
 
             gameservice.start();
 
