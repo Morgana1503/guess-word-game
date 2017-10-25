@@ -40,8 +40,6 @@ namespace Guess_word_game
                 currentGuess = currentGuess + "*";
             }
 
-            // повязати showQuestion i showCurrentGuess
-            // реалізувати GuessLetter i GuessWord
 
         }
     }
