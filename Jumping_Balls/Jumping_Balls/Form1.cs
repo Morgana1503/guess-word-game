@@ -8,8 +8,8 @@ namespace Jumping_Balls
 {
     public partial class Form1 : Form
     {
-        Balls b1;
-        Balls[] ballArr = new Balls[70];
+        Ball b1;
+        Ball[] ballArr = new Ball[70];
         Random rnd = new Random();
         Timer timer = new Timer();
 
@@ -28,26 +28,26 @@ namespace Jumping_Balls
                 int Random = rnd.Next(properties.Length);
                 result = (Brush)properties[Random].GetValue(null, null);
 
-                int X_rand_coord = rnd.Next(1, Width - 50);
-                int y_rand_coord = rnd.Next(1, Height - 70);
-                ballArr[i] = new Balls(result, 50, X_rand_coord, y_rand_coord, Size);
+                int x_rand = rnd.Next(1, Width - 50);
+                int y_rand = rnd.Next(1, Height - 70);
+                ballArr[i] = new Ball(result, 50, x_rand, y_rand, Size);
             }
 
-            b1 = new Balls(Size);
+            b1 = new Ball(Size);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             timer.Interval = 5;
-            timer.Tick += Timer_Tick;
+            timer.Tick += TimerTick;
             timer.Start();
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void TimerTick(object sender, EventArgs e)
         {
             for (int i = 0; i < ballArr.Count(); i++)
             {
-                ballArr[i].change_position();
+                ballArr[i].ChangePosition();
             }
             Refresh();
         }
